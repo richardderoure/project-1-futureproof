@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8 '>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Quarantine Thoughts</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway&display=swap' rel='stylesheet'>
+    <script src='https://code.jquery.com/jquery-3.4.1.js' integrity='sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=' crossorigin='anonymous'></script>
+    <script src='https://kit.fontawesome.com/4db72034b4.js' crossorigin='anonymous'></script>
+    <script src="main.js"></script>
+</head>
+
+<body id='home'>
+    <header>
+        <i class='fas fa-biohazard'></i>
+        <nav class='navbar-container'>
+            <ul class='navbar'>
+                <li>
+                    <a href='#home'>Form</a>
+                </li>
+                <li>
+                    <a href='#posts'>Posts</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class='heading'>Send us your thoughts</h1>
+        <form class='form-container' id='form' method='post' action='/result'>
+            <div class='input-container'>
+                <input type='text' name='title' id='title' class='input' placeholder='Title'>
+            </div>
+            <div class='input-container'>
+                <textarea name='message' id='message' maxlength='255' class='input' placeholder='Your message' rows='5'></textarea>
+            </div>
+            <div class='input-container'>
+<input type='text' name='gif' id='gif' class='input' placeholder='Link your favorite GIF!' >
+</div>
+            <div class='input-container'>
+                <input type='submit' name='submit' id='submit' class='submit' value='Post'>
+            </div>
+        </form>
+        <h1 class='heading'>All Posts:</h1>
+        <section id='posts'>
+            <!--Display posts here-->
+            
+            <div class='post-container'>
+                <div class='post-title posts'>Feeling really sad</div>
+                <div class='post-message posts'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet massa consequat ligula elementum vulputate. Sed consectetur risus et molestie iaculis. Sed maximus mauris quis libero bibendum, sed pharetra odio venenatis. Aliquam justo tortor, malesuada sed ipsum sit amet, volutpat porta tellus. Nulla vestibulum imperdiet sapien venenatis pharetra. Donec orci odio, varius ac erat in, faucibus aliquet purus. Nulla facilisi.</div>
+                <div class='post-gif posts'>Gif</div>
+                <div class='post-emoji posts'>Emoji</div>
+                <div class='post-comments posts'>Comments</div>
+                <div class='input-comment-container posts'>
+                    <form class='form-comments' action='/result/:id' method='POST'>
+                    <textarea class='input-comment' rows='2' placeholder='Write a comment'></textarea>
+                    <input type='submit' name='submit-comment' class="submit-comment" value='Send'>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class='post-container'>
+                    <div class='post-title posts'>Feeling really sad</div>
+                    <div class='post-message posts'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet massa consequat ligula elementum vulputate. Sed consectetur risus et molestie iaculis. Sed maximus mauris quis libero bibendum, sed pharetra odio venenatis. Aliquam justo tortor, malesuada sed ipsum sit amet, volutpat porta tellus. Nulla vestibulum imperdiet sapien venenatis pharetra. Donec orci odio, varius ac erat in, faucibus aliquet purus. Nulla facilisi.</div>
+                    <div class='post-gif posts'>Gif</div>
+                    <div class='post-emoji posts'>Emoji</div>
+                    <div class='post-comments posts'>Comments</div>
+                    <div class='input-comment-container posts'>
+                        <form class='form-comments' action='/result/:id' method='POST'>
+                        <textarea class='input-comment' rows='2' placeholder='Write a comment'></textarea>
+                        <input type='submit' name='submit-comment' class="submit-comment" value='Send'>
+                        </form>
+                    </div>
+    
+                </div>
+
+                <div class='post-container'>
+                        <div class='post-title posts'>Feeling really sad</div>
+                        <div class='post-message posts'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet massa consequat ligula elementum vulputate. Sed consectetur risus et molestie iaculis. Sed maximus mauris quis libero bibendum, sed pharetra odio venenatis. Aliquam justo tortor, malesuada sed ipsum sit amet, volutpat porta tellus. Nulla vestibulum imperdiet sapien venenatis pharetra. Donec orci odio, varius ac erat in, faucibus aliquet purus. Nulla facilisi.</div>
+                        <div class='post-gif posts'>Gif</div>
+                        <div class='post-emoji posts'>Emoji</div>
+                        <div class='post-comments posts'>Comments</div>
+                        <div class='input-comment-container posts'>
+                            <form class='form-comments' action='/result/:id' method='POST'>
+                            <textarea class='input-comment' rows='2' placeholder='Write a comment'></textarea>
+                            <input type='submit' name='submit-comment' class="submit-comment" value='Send'>
+                            </form>
+                        </div>
+        
+                    </div>
+
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>

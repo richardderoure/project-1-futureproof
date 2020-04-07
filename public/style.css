@@ -95,6 +95,7 @@ body {
         padding: 10px 30px 10px 30px;
         margin: 0.5em;
         margin-bottom: 1.5em;
+        display:none;
     }
 
     #posts{
@@ -110,6 +111,11 @@ body {
         justify-content: center;     
         margin-bottom: 0.5em;
         width: 100%;      
+    }
+
+    .post-message{
+        background-color: rgb(240,240,240);
+        border-radius: 15px;
     }
 
     .input-comment{
@@ -130,7 +136,7 @@ body {
 
     .input-comment-container{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
       
     }
 
@@ -145,3 +151,59 @@ body {
        border-bottom-right-radius:  25px;
        border-top-right-radius: 25px;
    }
+
+   .post-message{
+       display: flex;
+       flex-direction: column;
+   }
+
+   .post-emoji{
+       display: flex;
+       align-self: flex-end;
+       width: 30px;
+       height: 30px;
+   }
+
+   .second-emoji{
+       margin-top: 10px;
+    
+   }
+
+   .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .display-comment{
+      display: flex;
+      flex-direction: column;
+      /* display: none; */
+      width: 80%;
+      justify-content: center;
+      align-self: center;
+      align-items: center;
+      font-size: .8em;
+      padding: 5px 10px;
+      display: none;
+  }
+
+  .gif-img{
+      width: 70%;
+  }
+  .span{
+      display: flex;
+      justify-content: flex-end;
+  }
+
+

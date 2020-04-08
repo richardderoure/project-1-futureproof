@@ -1,0 +1,27 @@
+{
+  "name": "project-1-futureproof",
+  "version": "1.0.0",
+  "description": "back-end",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardderoure/project-1-futureproof.git"
+  },
+  "author": "igor/steven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardderoure/project-1-futureproof/issues"
+  },
+  "homepage": "https://github.com/richardderoure/project-1-futureproof#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "nodemon": "^2.0.2"
+  }
+}

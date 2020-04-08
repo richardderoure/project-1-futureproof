@@ -50,10 +50,11 @@ body {
     padding-right: 1em;
 }
 
+
 .heading{
     display: flex;
     justify-content: center;
-    margin: 2em 0 1em 0;
+    margin: 3em 0 1em 0;
     font-size: 3em;
     color:rgb(99, 102, 148);
     text-align: center
@@ -65,6 +66,12 @@ body {
     text-align:center;
     position: fixed;
     z-index: 5;
+}
+
+#logo{
+    font-size: .7em;
+    margin-left: 10px;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 .navbar-container{
@@ -79,7 +86,10 @@ body {
     position: fixed;
     justify-content: flex-end;
     margin:0;
-    height: 4em;
+    height: 6em;
+    margin-top: -15px;
+    background-color: rgb(230, 228, 231);
+    opacity: 0.8;
 }
 
 a{
@@ -146,14 +156,14 @@ li{
     justify-content: center;
     width: 100%;  
     flex-wrap: wrap;
-    
 }
 
 .posts{
     display: flex;
     justify-content: center;     
     margin-bottom: 0.5em;
-    width: 100%;      
+    width: 100%;   
+    word-wrap: break-word;   
 }
 
 .input-comment{
@@ -164,6 +174,8 @@ li{
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     font-size: 1em;
+    padding: 10px 30px 10px 30px;
+    color: #747474;
 }
 
 .form-comments{
@@ -172,16 +184,19 @@ li{
 
 }
 
+input, textarea{
+    color: #747474;
+}
+
 .input-comment-container{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 
 .input-comment::placeholder{
     padding: 10px 30px 10px 30px;
-
-    }
+    
+}
 
 .submit-comment{
     background-color: rgb(100, 100, 150);
@@ -194,7 +209,13 @@ li{
 .post-message{
     display: flex;
     flex-direction: column;
+    word-wrap: break-word;
 }
+
+.p-message{
+    display: flex;
+    /* overflow-wrap: break-word;*/
+} 
 
 .post-content{
     width:100%;
@@ -205,7 +226,13 @@ li{
     background-color: rgb(240,240,240);
     border-radius: 15px;
     margin-bottom: 1em;
+    overflow-wrap: break-word;
 }
+
+.post-title{
+    font-size: 1.7em;
+}
+
 
 .post-emoji{
     display: flex;
@@ -240,9 +267,10 @@ display: block;
     width: 80%;
     justify-content: center;
     align-self: center;
-    align-items: center;
     font-size: .8em;
-    padding: 5px 10px;
+    text-align: left;
+    margin-left: 5%;
+    padding-top: 5PX;;
 }
 
 .gif-img{
@@ -255,4 +283,13 @@ display: block;
 
 .emoji-icon{
     opacity: 0.5;
+}
+
+#footer-div{
+    height: 80px;
+    margin-top: 100px;
+}
+
+.footer-p{
+ text-align: center;
 }

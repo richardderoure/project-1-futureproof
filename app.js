@@ -59,7 +59,8 @@ app.post('/submission', (req, res) => {
         //Assign ID in one line
         req.body.id = dataJson.submissions.length;
         dataJson.submissions.push(req.body);
-
+        console.log(dataJson['commentArray[]']);
+        dataJson.submissions[req.body.id]['commentArray[]'] = [];
         //Write JSON to database file
         let myJson = JSON.stringify(dataJson);
         fs.writeFile('database.json', myJson, (err) => {
@@ -69,7 +70,7 @@ app.post('/submission', (req, res) => {
             };
             console.log('Saved submission to file!');
         });
-
+        console.log(myJson);
         res.send(myJson);
     });
 });
@@ -85,7 +86,9 @@ app.post('/comments', (req, res) => {
 
         let dataJson = JSON.parse(data);
         getTime(req.body)
-        dataJson.submissions[req.body.id].commentArray.push(req.body);
+        console.log(req.body);
+        console.log(dataJson.submissions[req.body.id]);
+        dataJson.submissions[req.body.id]['commentArray[]'].push(req.body.message);
 
         //Write JSON to database file
         let myJson = JSON.stringify(dataJson);
@@ -107,6 +110,7 @@ const getTime = (object) => {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     object.dateTime = date + ' ' + time;
+    return;
 };
 
 app.listen(PORT, () => {

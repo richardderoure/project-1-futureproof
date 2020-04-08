@@ -29,31 +29,37 @@ $(document).ready(() => {
         }]);
         // POSTS SUBMISSION TO SERVER
         $.post('http://localhost:8080/submissions', submission, function(data) {
-            displayContent(placeholderReturnObject);
+            displayContent(placeholderReturnObject); //change to data later
         });
     });
 
     // LISTEN FOR BUTTON CLICK ON COMMENT
-    $("#comment1").click(function(event) {
-        event.preventDefault();
-        commentFunction(1);
-    });
-    $("#comment2").click(function(event) {
-        event.preventDefault();
-        commentFunction(2);
-    });
-    $("#comment3").click(function(event) {
-        event.preventDefault();
-        commentFunction(3);
-    });
-    $("#comment4").click(function(event) {
-        event.preventDefault();
-        commentFunction(4);
-    });
-    $("#comment5").click(function(event) {
-        event.preventDefault();
-        commentFunction(5);
-    });
+    for (let s= 0; s <5; s++){
+        $(`#comment${s+1}`).click(function(event) {
+            event.preventDefault();
+            commentFunction(s+1);
+        });
+    }
+    // $("#comment1").click(function(event) {
+    //     event.preventDefault();
+    //     commentFunction(1);
+    // });
+    // $("#comment2").click(function(event) {
+    //     event.preventDefault();
+    //     commentFunction(2);
+    // });
+    // $("#comment3").click(function(event) {
+    //     event.preventDefault();
+    //     commentFunction(3);
+    // });
+    // $("#comment4").click(function(event) {
+    //     event.preventDefault();
+    //     commentFunction(4);
+    // });
+    // $("#comment5").click(function(event) {
+    //     event.preventDefault();
+    //     commentFunction(5);
+    // });
 });
 
 function commentFunction (number) {
@@ -68,6 +74,18 @@ function commentFunction (number) {
     $.post('http://localhost:8080/comments', comment, function(data) {
         displayContent(data);
     })};
+
+    function emojiFunction (submissionID, emojiIndex) {
+        event.preventDefault();
+        // GET VALUES FROM COMMENT FORM
+
+        let emoji = [submissionID, emojiIndex ];
+        
+        // POSTS COMMENT TO SERVER
+        $.post('http://localhost:8080/emojis', emoji, function(data) {
+            displayContent(data);
+        })};
+
 
 function displayContent(arg) {
      //arg = JSON.parse(arg);
@@ -85,10 +103,13 @@ function displayContent(arg) {
         for (let j=0; j<arg[i].commentArray.length; j++) {
             document.getElementById(`display-comment${i+1}-${j+1}`).innerHTML = arg[i].commentArray[j];
         };
-        for (let k=0; k<3; k++) {
-            console.log(document.getElementById(`post-emoji${i+1}-${k+1}`));
-            document.getElementById(`post-emoji${i+1}-${k+1}`).href = `http://localhost:8080/${id}/${k}`;
-        };
+        for (let k= 0; k < 3; k++){
+            document.getElementById(`span${i+1}-${k+1}`).innerHTML = arg[i].emoji[k];
+            $(`#post-emoji${i+1}-${k+1}`).click(function(event) {
+                event.preventDefault();
+                emojiFunction(id, k);
+            });
+        }    
         document.getElementById(`post-container${i+1}`).style.display = "flex";
     };
     createCookie('idArray', JSON.stringify(idArray));

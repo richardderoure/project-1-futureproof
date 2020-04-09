@@ -1,9 +1,12 @@
 const express = require("express");
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 const app = express();
-const PORT = process.env.PORT || 8000;
 const fs = require('fs');
 const cors = require('cors');
 var bodyParser = require('body-parser');
+//const dotenv = require('dotenv')
+
 
 
 app.use(express.urlencoded({

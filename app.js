@@ -1,12 +1,11 @@
 const express = require("express");
-require('dotenv').config();
-const PORT = process.env.PORT || 3000;
 const app = express();
+require('dotenv').config();
+const PORT = process.env.PORT || 8000;
 const fs = require('fs');
 const cors = require('cors');
 var bodyParser = require('body-parser');
-//const dotenv = require('dotenv')
-
+let ejs = require('ejs');
 
 
 app.use(express.urlencoded({
@@ -23,10 +22,47 @@ fs.writeFile('database.json', '{"submissions":[]}', (err) => {
     console.log('Default file setup complete');
 });
 
+
+// app.post('/emojis', (req,res)=>{
+//     fs.readFile('./database.json','utf-8',(err,data)=>{
+//         if(err){
+//             console.log('error with emoji input!');
+//             return
+//         };
+//         console.log('Responding to emoji...');
+//         let dataJson = JSON.parse(data);
+//         dataJson.submissions[req.body.id]['emojiArray[]'].emojiIndex++;
+//             // dataJson[i][“emojiArray[]“][req.body.emojiIndex] = parseInt(dataJson[i][“emojiArray[]“][req.body.emojiIndex]) + 1;
+//         fs.writeFile('database.json', myJson, (err) => {
+//             if (err) {
+//                 console.log('error saving to file');
+//                 return
+//             };
+//             console.log('Saved submission to file!');
+//         });
+//         console.log(myJson);
+//         res.send(myJson);
+//     });
+// });
+
+
+app.get('/', (req,res) => {
+    app.render('index');
+})
+
 //Renders home page
-app.get('/', (req, res) => {
-    app.render('index.html');
+app.get('/reset', (req, res) => {
+    fs.writeFile('database.json', '{"submissions":[]}', (err) => {
+        if (err) {
+            console.log('error saving to file');
+            return
+        };
+        console.log('Default file setup complete');
+    });
+    res.redirect('/');
 });
+
+
 
 //Gets data from form submission at the route /submission
 app.post('/submission', (req, res) => {

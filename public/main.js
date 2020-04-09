@@ -5,19 +5,9 @@ try {
     idArray = [1, 2, 3, 4, 5];
 };
 
-const showGif = () => {
-    var query = document.getElementById('query').value;
-    var xhr = $.get(`https://api.giphy.com/v1/gifs/search?api_key=EsXT2LFJzPBqw9GMg0nHB9fUlNsG5x4F&q=${query}&limit=25&offset=0&rating=G&lang=en`)
-    xhr.done(function (data) {
-        console.log(query)
-        console.log(data)
-        console.log(data.data[0].images.original.url)
-        let gifUrl = data.data[0].images.original.url;
-        return gifUrl;
-    });
-};
 
 $(document).ready(() => {
+
 
     // LISTEN FOR BUTTON CLICK ON SUBMIT
     $("#submit").click((event) => {
@@ -26,11 +16,16 @@ $(document).ready(() => {
         var query = document.getElementById('query').value;
         var xhr = $.get(`https://api.giphy.com/v1/gifs/search?api_key=EsXT2LFJzPBqw9GMg0nHB9fUlNsG5x4F&q=${query}&limit=25&offset=0&rating=G&lang=en`)
         
+        const randomInt = () => {
+            return Math.floor(Math.random()*25);
+        }
+
+
         xhr.done(function (data) {
-            console.log(query)
-            console.log(data)
-            console.log(data.data[0].images.original.url)
-            gifUrl = data.data[0].images.original.url;
+            console.log(query);
+            console.log(data);
+            console.log(data.data[0].images.original.url);
+            gifUrl = data.data[randomInt()].images.original.url;
 
         });
         console.log(gifUrl);
@@ -50,10 +45,11 @@ $(document).ready(() => {
             gif: gifUrl,
             dateTime: null,
             commentArray: null,
+            emojiArray: [0,0,0],
 
         };
         // POSTS SUBMISSION TO SERVER
-        $.post(`/submission`, submission, (data) => {
+        $.post('/submission', submission, (data) => {
             console.log(data);
             displayContent(data); //change to data later
         });
@@ -63,7 +59,7 @@ $(document).ready(() => {
     });
         });
 
-       
+
 
     // LISTEN FOR BUTTON CLICK ON COMMENT
     for (let s = 0; s < 5; s++) {
@@ -83,7 +79,7 @@ const commentFunction = (number) => {
         dateTime: null
     };
     // POSTS COMMENT TO SERVER
-    $.post(`/comments`, comment, (data) => {
+    $.post('http://localhost:8000/comments', comment, (data) => {
         displayContent(data);
         $('input[type="text"], textarea').val('')
 
@@ -97,7 +93,7 @@ const emojiFunction = (submissionID, emojiIndex) => {
     let emoji = [submissionID, emojiIndex];
 
     // POSTS COMMENT TO SERVER
-    $.post(`/emojis`, emoji, (data) => {
+    $.post('http://localhost:8000/emojis', emoji, (data) => {
         displayContent(data);
     })
 };
@@ -122,7 +118,10 @@ const displayContent = (arg) => {
         document.getElementById(`post-gif${i+1}`).src = arg.submissions[i].gif;
         console.log(arg.submissions[i]['commentArray[]'].length)
         for (let j = 0; j < arg.submissions[i]['commentArray[]'].length; j++) {
+
+            if(arg.submissions[i]['commentArray[]'].length <= 5){
             document.getElementById(`display-comment${i+1}-${j+1}`).innerHTML = arg.submissions[i]['commentArray[]'][j];
+            }
         };
         // for (let k= 0; k < 3; k++){
         //     document.getElementById(`span${i+1}-${k+1}`).innerHTML = arg.submissions[i].emoji[k];

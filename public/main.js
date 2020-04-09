@@ -53,7 +53,7 @@ $(document).ready(() => {
 
         };
         // POSTS SUBMISSION TO SERVER
-        $.post('http://localhost:8000/submission', submission, (data) => {
+        $.post(`/submission`, submission, (data) => {
             console.log(data);
             displayContent(data); //change to data later
         });
@@ -83,7 +83,7 @@ const commentFunction = (number) => {
         dateTime: null
     };
     // POSTS COMMENT TO SERVER
-    $.post('http://localhost:8000/comments', comment, (data) => {
+    $.post(`/comments`, comment, (data) => {
         displayContent(data);
         $('input[type="text"], textarea').val('')
 
@@ -97,7 +97,7 @@ const emojiFunction = (submissionID, emojiIndex) => {
     let emoji = [submissionID, emojiIndex];
 
     // POSTS COMMENT TO SERVER
-    $.post('http://localhost:8000/emojis', emoji, (data) => {
+    $.post(`/emojis`, emoji, (data) => {
         displayContent(data);
     })
 };
